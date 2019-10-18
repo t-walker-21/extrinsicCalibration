@@ -117,7 +117,7 @@ def main():
 
     for f in file_list: #loop through files in image dir and find depth projection errors
 
-        print f
+        #print f
 
         f_color = args['img_dir'] + "rgb/"+f
         f_depth = args['img_dir'] + "depth/"+f.replace(".png",".npy")
@@ -213,7 +213,7 @@ def main():
 
                 #project image points into 3D
 
-                pts3D = compute3d(image_points.astype(int),imgDepth,fx,fy,cx,cy,window=3)
+                pts3D = compute3d(image_points.astype(int),imgDepth,fx,fy,cx,cy,window=5)
                 
                 rotMat = cv2.Rodrigues(rvec)[0]
 
@@ -246,7 +246,7 @@ def main():
 
                 euc = np.linalg.norm(error,axis=1)
 
-                print euc
+                #print euc
 
                 results.append(euc)
                 
@@ -268,14 +268,13 @@ if __name__ == '__main__':
     main()
 
     results = np.array(results)
-    print (results.shape)
-
+    
     print ("averaged:")
 
-    print (np.mean(results,axis=1))
+    print (np.mean(np.mean(results,axis=1)))
 
     print ("std")
 
-    print (np.std(results,axis=1))
+    print (np.std(np.std(results,axis=1)))
 
 
