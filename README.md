@@ -15,3 +15,7 @@ python extrinsic_calib_charuco.py -i azureImages/ -k azure1_intrinsics.npz -r
 FOR RUNNING CALIBRATION WITH CHECKERBOARD, RUN:
 
 python extrinsic_calib_checkerboard.py -i azureCheckerboardImages/rgb/ -d azureCheckerboardImages/depth/
+
+FOR RUNNING CALIBRATION WITH CHECKERBOARD IMAGES FROM REALSENSE D435, RUN:
+
+python extrinsic_calib_checkerboard_realsense.py -i realSenseImages/rgb/ -d realSenseImages/depth/
